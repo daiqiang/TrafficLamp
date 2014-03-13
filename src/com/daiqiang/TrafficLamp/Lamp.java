@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import com.daiqiang.constant.LampState;
 
 public class Lamp {
-	private LampState lampState;
+	protected LampState lampState;
 	private int IntervalBefore2Left;
 	private int IntervalLeft2Red;
 	private int IntervalRed2Before;

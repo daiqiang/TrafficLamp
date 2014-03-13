@@ -1,6 +1,7 @@
 package com.daiqiang.TrafficLamp;
 
 import com.daiqiang.constant.Diraction;
+import com.daiqiang.constant.LampState;
 
 public class SandNLamp extends Lamp{
 	//指挥南北朝向的灯，标记它的方位为sorth
@@ -12,4 +13,6 @@ public class SandNLamp extends Lamp{
 		return sandNLamp;
 	}
 	static SandNLamp sandNLamp = new SandNLamp();
+	
+	
 }
