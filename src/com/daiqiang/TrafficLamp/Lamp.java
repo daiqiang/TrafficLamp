@@ -14,6 +14,7 @@ public class Lamp {
 		IntervalBefore2Left=2000;
 		IntervalLeft2Red=2000;
 		IntervalRed2Before=4000;
+		lampState=LampState.BEFORE;
 	}
 	public LampState getLampState() {
 		return lampState;
@@ -23,17 +24,15 @@ public class Lamp {
 		this.lampState = lampState;
 	}
 	
-	public void start(){
-		//一个线程，状态一直改变
+	public void alwaysChangeState(){
+		//一个线程，红绿灯状态一直改变
 		Executors.newSingleThreadExecutor().execute(new Runnable(){
 
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				Lamp tempLamp = new Lamp();
-				tempLamp.setLampState(LampState.BEFORE);
 				while(true){
-					switch(tempLamp.getLampState()){
+					switch(getLampState()){
 					case BEFORE:
 						System.out.println("此时绿灯亮，方向指向前");
 						try {
@@ -42,7 +41,7 @@ public class Lamp {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						tempLamp.setLampState(LampState.LEFT);
+						setLampState(LampState.LEFT);
 						break;
 					case LEFT:
 						System.out.println("此时绿灯亮，方向指向左");
@@ -52,7 +51,7 @@ public class Lamp {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						tempLamp.setLampState(LampState.RED);
+						setLampState(LampState.RED);
 						break;
 					case RED:
 						System.out.println("此时红灯亮");
@@ -62,7 +61,7 @@ public class Lamp {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						tempLamp.setLampState(LampState.BEFORE);
+						setLampState(LampState.BEFORE);
 						break;
 					case RIGHT:
 						
