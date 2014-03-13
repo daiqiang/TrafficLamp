@@ -6,8 +6,8 @@ import com.daiqiang.constant.Diraction;
 import com.daiqiang.constant.LampState;
 
 public class Car {
-	private Diraction local = Diraction.SORTH;
-	private Diraction distination = Diraction.NORTH;
+	private Diraction local;
+	private Diraction distination;
 	
 	public Diraction getLocal() {
 		return local;
@@ -21,11 +21,18 @@ public class Car {
 		return distination;
 	}
 	
-	
+	public Car(){
+		local = Diraction.SORTH;
+		distination = Diraction.NORTH;
+	}
+	public Car(Diraction loacl,Diraction distination){
+		this.local = loacl;
+		this.distination = distination;
+	}
 	/**
 	 * 功能：通过车的当前位置和目的地计算车的行驶方向
 	 * */
-	public LampState dirveDiraction(){
+	private LampState dirveDiraction(){
 		switch(local){
 		case SORTH:
 			if(distination == Diraction.NORTH){
